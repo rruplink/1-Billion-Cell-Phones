@@ -1,0 +1,1065 @@
+/* Base Styles */
+:root {
+    --bg-color: #000000;
+    --terminal-bg: #000000;
+    --border-color: rgba(255, 255, 255, 0.2);
+    --text-color: #ffffff;
+    --accent-color: #ffffff;
+    --secondary-accent: #ffffff;
+    --terminal-header: #1a1a1a;
+    --red: #ff5f56;
+    --yellow: #ffbd2e;
+    --green: #27c93f;
+    --transition-speed: 0.5s;
+    --inactive-color: rgba(255, 255, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden;
+    line-height: 1.4;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    letter-spacing: 1px;
+}
+
+h1 {
+    color: var(--text-color);
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+h2 {
+    font-size: 1.3rem;
+    color: var(--text-color);
+    letter-spacing: 1.5px;
+}
+
+h3 {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+p {
+    margin-bottom: 0.75rem;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* Screen Styles */
+.screen {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity var(--transition-speed), visibility var(--transition-speed);
+    background-color: var(--bg-color);
+    margin: 0;
+    padding: 0;
+}
+
+.screen.active {
+    opacity: 1;
+    visibility: visible;
+    z-index: 1;
+}
+
+/* We'll remove these header styles in the HTML update */
+.header {
+    display: none; /* Hide the header */
+}
+
+.content {
+    flex: 1;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+    overflow: visible;
+}
+
+/* Introduction Screen */
+.intro-layout {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    gap: 0;
+    position: relative;
+    overflow: visible;
+}
+
+.info-box {
+    width: 50%;
+    padding: 2rem;
+    border: 1px solid var(--text-color);
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(3px);
+    position: relative;
+    margin-left: 5%;
+    margin-right: 0;
+}
+
+.typing-text {
+    font-size: 1.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    font-weight: 400;
+    letter-spacing: 0.5px;
+}
+
+.globe-container {
+    position: absolute;
+    right: -40%;
+    left: 65%;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 120vh;
+    width: 80%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: visible;
+    z-index: 1;
+}
+
+.globe {
+    width: 120vh;
+    height: 120vh;
+    position: relative;
+    border-radius: 50%;
+    overflow: visible;
+    box-shadow: none;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#globe-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+    filter: brightness(1.2) contrast(1.1);
+}
+
+/* Menu Styles */
+.menu {
+    margin-top: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.menu-item {
+    padding: 0.4rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.3);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-weight: 500;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+}
+
+.menu-item:hover {
+    color: var(--text-color);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--text-color);
+    transform: translateY(-3px);
+}
+
+/* Why Screen - Carousel Style */
+.reasons-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 1.5rem auto 3rem;
+    overflow: hidden;
+    height: 60vh;
+}
+
+.reasons-carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+}
+
+.reason-card {
+    min-width: 100%;
+    padding: 3rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    transition: all 0.3s ease;
+    height: 100%;
+}
+
+.reason-card:hover {
+    border-color: var(--text-color);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.reason-card-title {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.reason-card-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    max-width: 90%;
+}
+
+.carousel-controls {
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: space-between;
+    padding: 0 1rem;
+    z-index: 2;
+}
+
+.carousel-arrow {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.carousel-arrow:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.carousel-indicator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.carousel-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: var(--inactive-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.carousel-dot.active {
+    background-color: var(--text-color);
+    transform: scale(1.2);
+}
+
+/* Replace this style for the why-highlight with a new style for the reason counter */
+.reason-counter {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+    letter-spacing: 1px;
+}
+
+/* Retain the highlight in the Why section */
+.why-highlight {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Principles Screen */
+.principles-container {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+}
+
+.principle-card {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    padding: 2.5rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.principle-card:hover {
+    border-color: var(--text-color);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.principle-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
+.principle-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: var(--text-color);
+}
+
+.principle-content {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+/* How Screen */
+.how-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 1000px;
+}
+
+.method-box {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.method-box:hover {
+    border-color: var(--text-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.method-box h2 {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+    letter-spacing: 0.7px;
+}
+
+.method-box h2 i {
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.method-box p {
+    font-size: 0.8rem;
+}
+
+/* Replace Roadmap Screen with Carousel Timeline */
+.phase-counter {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: var(--text-color);
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+.timeline-container {
+    position: relative;
+    width: 100%;
+    max-width: 900px;
+    margin: 2rem auto;
+    overflow: hidden;
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timeline-line {
+    position: relative;
+    width: 80%;
+    height: 3px;
+    background-color: var(--inactive-color);
+    margin: 2rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    opacity: 1;
+    border-radius: 1.5px;
+}
+
+.timeline-marker {
+    width: 16px;
+    height: 16px;
+    background-color: var(--inactive-color);
+    border-radius: 50%;
+    position: relative;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.timeline-marker.active {
+    background-color: var(--text-color);
+    transform: scale(1.2);
+}
+
+.timeline-marker::after {
+    content: attr(data-year);
+    position: absolute;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
+    color: var(--inactive-color);
+    white-space: nowrap;
+}
+
+.timeline-marker.active::after {
+    color: var(--text-color);
+    font-weight: 500;
+}
+
+.year-indicator {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 0.5rem 0 1.5rem;
+    text-align: center;
+    letter-spacing: 1.5px;
+}
+
+.timeline-carousel {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+    height: 100%;
+}
+
+.phase-card {
+    min-width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 2rem;
+}
+
+.phase-pointer {
+    width: 0;
+    height: 0;
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 20px solid var(--inactive-color);
+    margin-bottom: 0.5rem;
+    transition: all 0.3s ease;
+    opacity: 1;
+}
+
+.phase-content {
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    width: 80%;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.phase-card:hover .phase-content {
+    border-color: var(--text-color);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.phase-card:hover .phase-pointer {
+    border-bottom-color: var(--text-color);
+}
+
+.timeline-controls {
+    width: 100%;
+    top: 50%;
+}
+
+/* Support Screen */
+.support-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 900px;
+}
+
+.support-box {
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    padding: 0.75rem;
+    transition: all 0.3s ease;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.support-box:hover {
+    border-color: var(--text-color);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.support-box h2 {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 1rem;
+}
+
+.support-box h2 i {
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.support-box p {
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+/* New Support Trifold Layout */
+.support-trifold {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 1rem auto 3.5rem;
+    width: 100%;
+    max-width: 1200px;
+    flex-wrap: wrap;
+}
+
+.support-panel {
+    flex: 1;
+    min-width: 300px;
+    max-width: 350px;
+    padding: 2rem 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(3px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.support-panel:hover {
+    border-color: var(--text-color);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+}
+
+.support-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.support-title {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: var(--text-color);
+}
+
+.support-content {
+    font-size: 1rem;
+    line-height: 1.6;
+    width: 100%;
+}
+
+.support-content p {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.panel-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    width: 100%;
+}
+
+.support-content .terminal-form {
+    margin-top: 1rem;
+}
+
+/* Navigation Controls */
+.navigation-controls {
+    position: fixed;
+    bottom: 1.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    z-index: 10;
+    gap: 1rem;
+}
+
+.page-nav-container {
+    display: flex;
+    gap: 1rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 0.8rem 1.5rem;
+    border-radius: 40px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+}
+
+.page-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem 0.8rem;
+    border-radius: 20px;
+    min-width: 80px;
+}
+
+.page-nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.page-nav-indicator {
+    height: 4px;
+    width: 100%;
+    background-color: transparent;
+    position: absolute;
+    top: -8px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+}
+
+.page-nav-item.active .page-nav-indicator {
+    background-color: var(--text-color);
+}
+
+.page-nav-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--inactive-color);
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+}
+
+.page-nav-item.active .page-nav-label {
+    color: var(--text-color);
+    font-weight: 600;
+}
+
+.nav-arrow {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    color: var(--text-color);
+}
+
+.nav-arrow:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+    transform: scale(1.1);
+}
+
+/* Remove old indicator styles */
+.screen-indicators {
+    display: none;
+}
+
+.indicator {
+    display: none;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+    .intro-layout {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info-box {
+        width: 80%;
+        padding: 1.5rem;
+        text-align: center;
+        margin: 0 auto;
+        z-index: 2;
+    }
+
+    .menu {
+        justify-content: center;
+    }
+
+    .globe-container {
+        position: absolute;
+        right: -50%;
+        left: auto;
+        width: 100%;
+        height: 100vh;
+        z-index: 1;
+    }
+
+    .globe {
+        width: 120vh;
+        height: 120vh;
+        margin-left: 0;
+        margin-right: -30%;
+    }
+
+    .how-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .timeline-container {
+        height: auto;
+        min-height: 50vh;
+    }
+    
+    .timeline-line {
+        width: 90%;
+    }
+    
+    .phase-content {
+        width: 90%;
+        padding: 1.5rem;
+    }
+    
+    .timeline-marker::after {
+        font-size: 0.7rem;
+    }
+
+    .principle-card {
+        min-width: 280px;
+        padding: 2rem 1.5rem;
+    }
+
+    .support-panel {
+        min-width: 280px;
+        padding: 1.5rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    h1 {
+        font-size: 1.4rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .content {
+        padding: 0.75rem;
+    }
+
+    .info-box {
+        padding: 1rem;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .globe-container {
+        right: -60%;
+        left: auto;
+        width: 100%;
+        height: 100vh;
+    }
+
+    .globe {
+        width: 100vh;
+        height: 100vh;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .how-container {
+        grid-template-columns: 1fr;
+    }
+
+    .reason-card {
+        padding: 1.5rem;
+    }
+    
+    .reason-card-title {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .reason-card-content {
+        font-size: 0.9rem;
+        line-height: 1.6;
+    }
+
+    .reasons-container {
+        height: 60vh;
+        margin-bottom: 4rem;
+    }
+
+    .carousel-arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    .reason-counter {
+        font-size: 1.1rem;
+        margin-bottom: 1rem;
+    }
+
+    .timeline-marker {
+        width: 12px;
+        height: 12px;
+    }
+    
+    .phase-content {
+        padding: 1.2rem;
+    }
+    
+    .phase-counter {
+        font-size: 1.1rem;
+    }
+    
+    .timeline-marker::after {
+        display: none;
+    }
+    
+    .year-indicator {
+        font-size: 1rem;
+    }
+
+    .principle-card {
+        min-width: 100%;
+        margin-bottom: 1rem;
+    }
+    
+    .principle-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .principle-title {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+
+    .support-panel {
+        min-width: 100%;
+        margin-bottom: 1.5rem;
+        padding: 1.5rem 1.5rem;
+    }
+    
+    .support-icon {
+        font-size: 2rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .support-title {
+        font-size: 1.4rem;
+        margin-bottom: 1rem;
+    }
+    
+    .support-content p {
+        font-size: 0.9rem;
+    }
+    
+    .navigation-controls {
+        bottom: 1rem;
+    }
+    
+    .page-nav-container {
+        padding: 0.4rem 0.8rem;
+        gap: 0.3rem;
+    }
+    
+    .page-nav-item {
+        min-width: auto;
+        padding: 0.3rem 0.4rem;
+    }
+    
+    .page-nav-label {
+        font-size: 0.65rem;
+    }
+    
+    .nav-arrow {
+        width: 30px;
+        height: 30px;
+        font-size: 0.9rem;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .page-nav-container {
+        padding: 0.6rem 1rem;
+        gap: 0.6rem;
+    }
+    
+    .page-nav-item {
+        min-width: 60px;
+        padding: 0.4rem 0.6rem;
+    }
+    
+    .page-nav-label {
+        font-size: 0.75rem;
+    }
+    
+    .nav-arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
+
+#why .content {
+    text-align: center;
+}
+
+/* Terminal Button and Form Styles */
+.terminal-button {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: transparent;
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    border-radius: 4px;
+}
+
+.terminal-button:hover {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+}
+
+.terminal-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 0.75rem;
+}
+
+.terminal-form input,
+.terminal-form textarea {
+    width: 100%;
+    padding: 0.8rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    color: var(--text-color);
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.terminal-form textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.terminal-form input:focus,
+.terminal-form textarea:focus {
+    border-color: var(--text-color);
+    outline: none;
+}
+
+.terminal-form .terminal-button {
+    margin-top: 0.5rem;
+}
+}

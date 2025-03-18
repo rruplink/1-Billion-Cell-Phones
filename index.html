@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1 Billion Cell Phones</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Adding Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Screen 1: Introduction -->
+        <section id="introduction" class="screen active">
+            <div class="content">
+                <div class="intro-layout">
+                    <div class="info-box">
+                        <h1>1 BILLION CELL PHONES</h1>
+                        <p class="typing-text">Connecting humanity through digital access.</p>
+                        <p>Our mission is to provide cellular technology to every person over 14 years old worldwide, focusing on regions with less than 70% cell phone penetration.</p>
+                        <div class="menu">
+                            <div class="menu-item" data-target="principles">Our Principles</div>
+                            <div class="menu-item" data-target="why">Why?</div>
+                            <div class="menu-item" data-target="how">How</div>
+                            <div class="menu-item" data-target="roadmap">Roadmap</div>
+                            <div class="menu-item" data-target="support">Support</div>
+                        </div>
+                    </div>
+                    <div class="globe-container">
+                        <div class="globe" id="globe">
+                            <!-- Replacing the ThreeJS globe with video -->
+                            <video id="globe-video" autoplay muted loop playsinline>
+                                <!-- The source will be added when you provide a video file -->
+                                <source src="globe-final.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 2: Our Principles -->
+        <section id="principles" class="screen">
+            <div class="content">
+                <h1>OUR PRINCIPLES</h1>
+                <div class="principles-container">
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="principle-title">Data-Driven</div>
+                        <div class="principle-content">
+                            <p>We base our decisions on comprehensive research and real-world data, ensuring our initiatives target the areas of greatest need and opportunity for impact. Every program we implement is continuously measured and refined for maximum effectiveness.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="principle-title">Uber-Transparent</div>
+                        <div class="principle-content">
+                            <p>We commit to complete transparency in our operations, finances, and impact metrics. All stakeholders—from donors to recipients—have access to clear information about how resources are allocated and what outcomes are achieved.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="principle-card">
+                        <div class="principle-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="principle-title">Dedicated</div>
+                        <div class="principle-content">
+                            <p>Our team is relentlessly committed to our mission. We pursue our goals with unwavering dedication, overcoming obstacles through innovation, persistence, and strategic collaboration with like-minded partners around the world.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 3: Why? -->
+        <section id="why" class="screen">
+            <div class="content">
+                <h1>WHY CELL PHONES?</h1>
+                <div class="reason-counter">Reason 1 of 8</div>
+                <div class="reasons-container">
+                    <div class="reasons-carousel">
+                        <div class="reason-card" data-reason="economic">
+                            <div class="reason-card-title">Economic Empowerment</div>
+                            <div class="reason-card-content">
+                                <p>Provides access to banking, financial services, and digital marketplaces, enabling economic mobility and independence for individuals and communities in developing regions.</p>
+                            </div>
+                        </div>
+                        <div class="reason-card" data-reason="healthcare">
+                            <div class="reason-card-title">Healthcare Access</div>
+                            <div class="reason-card-content">
+                                <p>Enables telemedicine, health information, medication reminders, and emergency services in underserved areas where traditional healthcare infrastructure is limited or non-existent.</p>
+                            </div>
+                        </div>
+                        <div class="reason-card" data-reason="education">
+                            <div class="reason-card-title">Educational Opportunity</div>
+                            <div class="reason-card-content">
+                                <p>Creates pathways to learning resources, courses, and AI-powered educational tools regardless of location, bringing quality education to those without access to formal schools.</p>
+                            </div>
+                        </div>
+                        <div class="reason-card" data-reason="empowerment">
+                            <div class="reason-card-title">Women's & Minority Empowerment</div>
+                            <div class="reason-card-content">
+                                <p>Gives marginalized groups tools to network, organize, access resources, and escape dangerous situations, providing a voice to those who have historically been silenced.</p>
+                            </div>
+                        </div>
+                        <div class="reason-card" data-reason="crisis">
+                            <div class="reason-card-title">Crisis Response</div>
+                            <div class="reason-card-content">
+                                <p>Provides critical communication channels during disasters and emergencies for alerts and coordinating assistance, potentially saving lives during natural disasters and humanitarian crises.</p>
+                            </div>
+                        </div>
+                        <div class="reason-card" data-reason="agriculture">
+                            <div class="reason-card-title">Agricultural Improvement</div>
+                            <div class="reason-card-content">
+                                <p>Gives farmers access to weather data, market prices, and best practices that can dramatically improve yields and income, supporting food security and rural livelihoods.</p>
+                            </div>
+                        </div>
+                        <div class="reason-card" data-reason="identity">
+                            <div class="reason-card-title">Digital Identity</div>
+                            <div class="reason-card-content">
+                                <p>Offers a platform for the estimated 1 billion people without official identification to establish digital identity, enabling access to government services, voting, and formal economic participation.</p>
+                            </div>
+                        </div>
+                        <div class="reason-card" data-reason="entrepreneurship">
+                            <div class="reason-card-title">Entrepreneurship Development</div>
+                            <div class="reason-card-content">
+                                <p>Enables small business creation with minimal capital investment, particularly in developing economies, creating jobs and driving innovation in previously disconnected communities.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-controls">
+                        <div class="carousel-arrow prev-card">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="carousel-arrow next-card">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                    <div class="carousel-indicator">
+                        <div class="carousel-dot active" data-index="0"></div>
+                        <div class="carousel-dot" data-index="1"></div>
+                        <div class="carousel-dot" data-index="2"></div>
+                        <div class="carousel-dot" data-index="3"></div>
+                        <div class="carousel-dot" data-index="4"></div>
+                        <div class="carousel-dot" data-index="5"></div>
+                        <div class="carousel-dot" data-index="6"></div>
+                        <div class="carousel-dot" data-index="7"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 4: How -->
+        <section id="how" class="screen">
+            <div class="content">
+                <h1>HOW WE'LL DO IT</h1>
+                <div class="how-container">
+                    <div class="method-box">
+                        <h2><i class="fas fa-hand-holding-usd"></i> Micro-Loans</h2>
+                        <p>Providing accessible micro-financing options to individuals and small businesses to purchase affordable devices with manageable repayment structures.</p>
+                    </div>
+                    <div class="method-box">
+                        <h2><i class="fas fa-gift"></i> Targeted Gifts</h2>
+                        <p>Distributing devices to those most in need through carefully vetted programs that ensure technology reaches people who would benefit most.</p>
+                    </div>
+                    <div class="method-box">
+                        <h2><i class="fas fa-tower-cell"></i> Infrastructure</h2>
+                        <p>Partnering with telecommunication companies to expand networks into underserved areas and reduce connectivity costs.</p>
+                    </div>
+                    <div class="method-box">
+                        <h2><i class="fas fa-graduation-cap"></i> Digital Literacy</h2>
+                        <p>Implementing education programs to ensure recipients can effectively use their devices to access services and opportunities.</p>
+                    </div>
+                    <div class="method-box">
+                        <h2><i class="fas fa-handshake"></i> Local Partnerships</h2>
+                        <p>Working with local organizations to ensure cultural appropriateness and sustainability of our initiatives.</p>
+                    </div>
+                    <div class="method-box">
+                        <h2><i class="fas fa-compass"></i> Global Strategy</h2>
+                        <p>Developing region-specific approaches that address unique challenges while maintaining our core mission and values.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 5: Roadmap -->
+        <section id="roadmap" class="screen">
+            <div class="content">
+                <h1>OUR ROADMAP</h1>
+                <div class="phase-counter">Phase 1 of 5</div>
+                <div class="timeline-container">
+                    <div class="timeline-line">
+                        <div class="timeline-marker" data-year="2024"></div>
+                        <div class="timeline-marker" data-year="2025-2026"></div>
+                        <div class="timeline-marker" data-year="2027-2028"></div>
+                        <div class="timeline-marker" data-year="2029-2030"></div>
+                        <div class="timeline-marker" data-year="2031+"></div>
+                    </div>
+                    <div class="year-indicator">2024</div>
+                    <div class="timeline-carousel">
+                        <div class="phase-card" data-phase="1">
+                            <div class="phase-pointer"></div>
+                            <div class="phase-content">
+                                <h3>Phase 1: Foundation</h3>
+                                <p>Establish partnerships, secure initial funding, and launch pilot programs in selected regions of India and Africa.</p>
+                            </div>
+                        </div>
+                        <div class="phase-card" data-phase="2">
+                            <div class="phase-pointer"></div>
+                            <div class="phase-content">
+                                <h3>Phase 2: Expansion</h3>
+                                <p>Scale successful pilot programs and introduce new initiatives in additional countries, refining our approach based on data and feedback.</p>
+                            </div>
+                        </div>
+                        <div class="phase-card" data-phase="3">
+                            <div class="phase-pointer"></div>
+                            <div class="phase-content">
+                                <h3>Phase 3: Infrastructure Focus</h3>
+                                <p>Invest heavily in developing cellular infrastructure in remote areas to enable connectivity in previously unreachable locations.</p>
+                            </div>
+                        </div>
+                        <div class="phase-card" data-phase="4">
+                            <div class="phase-pointer"></div>
+                            <div class="phase-content">
+                                <h3>Phase 4: Global Integration</h3>
+                                <p>Connect regional initiatives into a global network, ensuring comprehensive coverage and support systems.</p>
+                            </div>
+                        </div>
+                        <div class="phase-card" data-phase="5">
+                            <div class="phase-pointer"></div>
+                            <div class="phase-content">
+                                <h3>Phase 5: Sustainability</h3>
+                                <p>Transition to self-sustaining models where communities maintain and grow their own digital ecosystems with minimal external support.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-controls timeline-controls">
+                        <div class="carousel-arrow prev-phase">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="carousel-arrow next-phase">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Screen 6: Support -->
+        <section id="support" class="screen">
+            <div class="content">
+                <h1>SUPPORT OUR MISSION</h1>
+                <div class="support-trifold">
+                    <!-- Donate Section -->
+                    <div class="support-panel">
+                        <div class="support-icon">
+                            <i class="fas fa-donate"></i>
+                        </div>
+                        <div class="support-title">Donate</div>
+                        <div class="support-content">
+                            <p>Your financial contribution can help provide cell phones and connectivity to those who need it most.</p>
+                            <div class="panel-buttons">
+                                <button class="terminal-button">MAKE A DONATION</button>
+                                <button class="terminal-button">SPONSOR US</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact & Press Section -->
+                    <div class="support-panel">
+                        <div class="support-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="support-title">Contact & Press</div>
+                        <div class="support-content">
+                            <p>Reach out to our teams for questions or media enquiries.</p>
+                            <form class="terminal-form" id="contact-form">
+                                <input type="text" placeholder="Name" required>
+                                <input type="email" placeholder="Email" required>
+                                <textarea placeholder="Message" required></textarea>
+                                <button type="submit" class="terminal-button">SEND</button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                    <!-- Volunteer & Careers Section -->
+                    <div class="support-panel">
+                        <div class="support-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <div class="support-title">Volunteer & Careers</div>
+                        <div class="support-content">
+                            <p>Join our global team of volunteers or explore professional opportunities that contribute directly to our mission.</p>
+                            <div class="panel-buttons">
+                                <button class="terminal-button">VOLUNTEER</button>
+                                <button class="terminal-button">VIEW CAREERS</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navigation Controls -->
+        <div class="navigation-controls">
+            <div class="nav-arrow prev" id="prev-screen">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="page-nav-container">
+                <div class="page-nav-item active" data-screen="introduction">
+                    <div class="page-nav-indicator"></div>
+                    <div class="page-nav-label">Intro</div>
+                </div>
+                <div class="page-nav-item" data-screen="principles">
+                    <div class="page-nav-indicator"></div>
+                    <div class="page-nav-label">Principles</div>
+                </div>
+                <div class="page-nav-item" data-screen="why">
+                    <div class="page-nav-indicator"></div>
+                    <div class="page-nav-label">Why</div>
+                </div>
+                <div class="page-nav-item" data-screen="how">
+                    <div class="page-nav-indicator"></div>
+                    <div class="page-nav-label">How</div>
+                </div>
+                <div class="page-nav-item" data-screen="roadmap">
+                    <div class="page-nav-indicator"></div>
+                    <div class="page-nav-label">Roadmap</div>
+                </div>
+                <div class="page-nav-item" data-screen="support">
+                    <div class="page-nav-indicator"></div>
+                    <div class="page-nav-label">Support</div>
+                </div>
+            </div>
+            <div class="nav-arrow next" id="next-screen">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
