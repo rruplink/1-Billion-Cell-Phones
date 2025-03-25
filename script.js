@@ -98,27 +98,18 @@ document.addEventListener('DOMContentLoaded', () => {
     forms.forEach(form => {
         form.addEventListener('submit', (e) => {
             e.preventDefault();
-            const button = form.querySelector('button[type="submit"]');
-            const originalText = button.textContent;
-            
-            button.textContent = 'PROCESSING...';
-            
-            setTimeout(() => {
-                button.textContent = 'SUBMITTED!';
-                button.style.backgroundColor = 'var(--accent-color)';
-                button.style.color = 'var(--terminal-bg)';
-                
-                // Clear form fields
-                form.querySelectorAll('input, textarea, select').forEach(input => {
-                    input.value = '';
-                });
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.backgroundColor = '';
-                    button.style.color = '';
-                }, 2000);
-            }, 1000);
+            alert('This functionality has not been added yet. Check back soon.');
+        });
+    });
+
+    // Add click handlers for all support page buttons
+    const supportButtons = document.querySelectorAll('.support-panel .terminal-button');
+    supportButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            if (!e.target.closest('form')) { // Only trigger for non-form buttons
+                e.preventDefault();
+                alert('This functionality has not been added yet. Check back soon.');
+            }
         });
     });
 

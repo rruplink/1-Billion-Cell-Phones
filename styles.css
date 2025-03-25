@@ -1070,3 +1070,14 @@ p {
     margin-bottom: 1.2rem;
     letter-spacing: 0.5px;
 }
+
+.copyright {
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    z-index: 100;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+}
