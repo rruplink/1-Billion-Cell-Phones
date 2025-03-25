@@ -221,23 +221,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const phaseCards = document.querySelectorAll('.phase-card');
         const prevArrow = document.querySelector('.prev-phase');
         const nextArrow = document.querySelector('.next-phase');
-        const phaseCounter = document.querySelector('.phase-counter');
-        const yearIndicator = document.querySelector('.year-indicator');
         const timelineMarkers = document.querySelectorAll('.timeline-marker');
-        const years = ["2024", "2025-2026", "2027-2028", "2029-2030", "2031+"];
         let currentIndex = 0;
         let touchStartX = 0;
         let touchEndX = 0;
 
-        // Update the timeline position, counter, and markers
+        // Update the timeline position and markers
         const updateTimeline = () => {
             timelineCarousel.style.transform = `translateX(-${currentIndex * 100}%)`;
-            
-            // Update phase counter
-            phaseCounter.textContent = `Phase ${currentIndex + 1} of ${phaseCards.length}`;
-            
-            // Update year indicator
-            yearIndicator.textContent = years[currentIndex];
             
             // Update timeline markers
             timelineMarkers.forEach((marker, index) => {
@@ -249,21 +240,23 @@ document.addEventListener('DOMContentLoaded', () => {
         nextArrow.addEventListener('click', () => {
             if (currentIndex < phaseCards.length - 1) {
                 currentIndex++;
-            } else {
-                // Reset to beginning when at the end
-                currentIndex = 0;
+                updateTimeline();
             }
-            updateTimeline();
         });
 
         prevArrow.addEventListener('click', () => {
             if (currentIndex > 0) {
                 currentIndex--;
-            } else {
-                // Jump to end when at the beginning
-                currentIndex = phaseCards.length - 1;
+                updateTimeline();
             }
-            updateTimeline();
+        });
+
+        // Event listeners for timeline markers
+        timelineMarkers.forEach((marker, index) => {
+            marker.addEventListener('click', () => {
+                currentIndex = index;
+                updateTimeline();
+            });
         });
 
         // Touch swipe functionality
@@ -278,21 +271,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const handleSwipe = () => {
             const swipeThreshold = 50;
-            if (touchEndX + swipeThreshold < touchStartX) {
+            if (touchEndX + swipeThreshold < touchStartX && currentIndex < phaseCards.length - 1) {
                 // Swipe left, go next
-                if (currentIndex < phaseCards.length - 1) {
-                    currentIndex++;
-                } else {
-                    currentIndex = 0;
-                }
+                currentIndex++;
                 updateTimeline();
-            } else if (touchEndX > touchStartX + swipeThreshold) {
+            } else if (touchEndX > touchStartX + swipeThreshold && currentIndex > 0) {
                 // Swipe right, go prev
-                if (currentIndex > 0) {
-                    currentIndex--;
-                } else {
-                    currentIndex = phaseCards.length - 1;
-                }
+                currentIndex--;
                 updateTimeline();
             }
         };

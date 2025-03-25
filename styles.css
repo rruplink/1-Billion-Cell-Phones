@@ -459,7 +459,7 @@ p {
     width: 80%;
     height: 3px;
     background-color: var(--inactive-color);
-    margin: 2rem 0;
+    margin: 3rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -475,6 +475,8 @@ p {
     position: relative;
     transition: all 0.3s ease;
     opacity: 1;
+    cursor: pointer;
+    transform-origin: center center;
 }
 
 .timeline-marker.active {
@@ -485,26 +487,24 @@ p {
 .timeline-marker::after {
     content: attr(data-year);
     position: absolute;
-    top: 20px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
     font-size: 0.8rem;
     color: var(--inactive-color);
     white-space: nowrap;
+    transition: all 0.3s ease;
+    transform-origin: bottom center;
 }
 
 .timeline-marker.active::after {
     color: var(--text-color);
     font-weight: 500;
+    transform: translateX(-50%) scale(1.1);
 }
 
 .year-indicator {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-color);
-    margin: 0.5rem 0 1.5rem;
-    text-align: center;
-    letter-spacing: 1.5px;
+    display: none;
 }
 
 .timeline-carousel {
@@ -1062,4 +1062,11 @@ p {
 .terminal-form .terminal-button {
     margin-top: 0.5rem;
 }
+
+.phase-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 1.2rem;
+    letter-spacing: 0.5px;
 }
