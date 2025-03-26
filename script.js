@@ -8,6 +8,21 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentScreen = 0;
     let isMobile = window.innerWidth <= 768;
     
+    // Function to handle video element
+    function handleVideo() {
+        const globeVideo = document.getElementById('globe-video');
+        if (!globeVideo) return;
+
+        if (isMobile) {
+            globeVideo.pause();
+            globeVideo.remove();
+        } else if (currentScreen === 0) {
+            globeVideo.play().catch(e => console.log('Video autoplay failed: User interaction required'));
+        } else {
+            globeVideo.pause();
+        }
+    }
+    
     // Function to set up mobile view
     function setupMobileView() {
         screens.forEach(screen => {
@@ -15,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             screen.style.opacity = '1';
             screen.style.visibility = 'visible';
         });
+        handleVideo();
     }
 
     // Function to set up desktop view
@@ -28,6 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 screen.classList.remove('active');
             }
         });
+        handleVideo();
     }
     
     // Function to display a specific screen (desktop only)
@@ -48,15 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         prevButton.style.opacity = index === 0 ? '0.3' : '1';
         nextButton.style.opacity = index === screens.length - 1 ? '0.3' : '1';
         
-        // Ensure globe video plays when first screen is active
-        const globeVideo = document.getElementById('globe-video');
-        if (globeVideo) {
-            if (index === 0) {
-                globeVideo.play().catch(e => console.log('Video autoplay failed: User interaction required'));
-            } else {
-                globeVideo.pause();
-            }
-        }
+        handleVideo();
     }
     
     // Event listeners for navigation buttons (desktop only)

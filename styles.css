@@ -1098,3 +1098,33 @@ p {
     font-weight: 300;
     letter-spacing: 0.5px;
 }
+
+/* Mobile Menu Styles */
+.mobile-menu-items {
+    display: none;
+}
+
+.mobile-menu-item {
+    text-decoration: none;
+    color: var(--text-color);
+}
+
+/* Globe Container Mobile Visibility */
+@media screen and (max-width: 768px) {
+    .globe-container {
+        display: none;
+    }
+
+    .info-box {
+        width: 100%;
+        margin: 0;
+        padding: 1.5rem;
+        border: none;
+        background-color: transparent;
+        backdrop-filter: none;
+    }
+
+    .typing-text {
+        display: none;
+    }
+}
