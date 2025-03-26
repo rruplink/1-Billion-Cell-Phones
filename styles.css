@@ -12,6 +12,9 @@
     --green: #27c93f;
     --transition-speed: 0.5s;
     --inactive-color: rgba(255, 255, 255, 0.3);
+    --bottom-nav-height: 60px;
+    --copyright-height: 40px;
+    --total-bottom-height: calc(var(--bottom-nav-height) + var(--copyright-height));
 }
 
 * {
@@ -1084,68 +1087,75 @@ p {
 
 /* Mobile Navigation Menu */
 @media screen and (max-width: 768px) {
-    /* Enable scrolling for content */
+    /* Enable proper scrolling */
     body {
         overflow-y: auto;
+        position: relative;
+        height: 100%;
         -webkit-overflow-scrolling: touch;
     }
 
     .container {
-        overflow-y: auto;
-        height: auto;
         min-height: 100vh;
+        padding-bottom: var(--total-bottom-height);
+        position: relative;
+        overflow-y: visible;
     }
 
     .screen {
+        position: relative;
         min-height: 100vh;
         height: auto;
-        overflow-y: auto;
-        position: relative;
-        padding-bottom: 120px; /* Space for navigation and copyright */
+        overflow-y: visible;
+        padding-bottom: var(--total-bottom-height);
     }
 
     .content {
         padding: 1rem;
-        min-height: calc(100vh - 120px); /* Account for navigation and copyright */
+        padding-bottom: 2rem;
+        min-height: calc(100vh - var(--total-bottom-height));
+        overflow-y: visible;
     }
 
-    /* Adjust navigation controls positioning */
+    /* Fixed bottom navigation */
     .navigation-controls {
         position: fixed;
-        bottom: 60px; /* Move up to make room for copyright */
+        bottom: var(--copyright-height);
         left: 0;
         right: 0;
-        transform: none;
+        height: var(--bottom-nav-height);
+        background: rgba(0, 0, 0, 0.9);
+        display: flex;
         justify-content: center;
-        background: rgba(0, 0, 0, 0.8);
-        padding: 1rem;
+        align-items: center;
         z-index: 100;
+        padding: 0.5rem;
+        border-top: 1px solid var(--border-color);
     }
 
-    .nav-arrow {
-        width: 3.5rem;
-        height: 3.5rem;
-        font-size: 1.2rem;
-        margin: 0 1rem;
-    }
-
-    /* Adjust copyright position */
+    /* Fixed copyright at bottom */
     .copyright {
         position: fixed;
-        bottom: 1rem;
+        bottom: 0;
         left: 0;
         right: 0;
+        height: var(--copyright-height);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.9);
         text-align: center;
         padding: 0.5rem;
-        background: rgba(0, 0, 0, 0.8);
         z-index: 100;
+        border-top: 1px solid var(--border-color);
     }
 
-    /* Adjust content containers for better scrolling */
+    /* Ensure content sections are scrollable */
     .principles-container,
     .how-container,
     .support-trifold {
-        padding-bottom: 2rem;
+        overflow-y: visible;
+        margin-bottom: 2rem;
     }
 
     .principle-card,
@@ -1154,15 +1164,14 @@ p {
         margin-bottom: 1.5rem;
     }
 
-    /* Ensure carousels are scrollable */
     .reasons-container,
     .timeline-container {
+        overflow-y: visible;
         height: auto;
-        min-height: 60vh;
         margin-bottom: 2rem;
     }
 
-    /* Rest of the existing mobile styles... */
+    /* Rest of existing mobile styles... */
     .menu {
         flex-direction: column;
         width: 100%;
@@ -1352,29 +1361,32 @@ p {
 
 /* Small mobile devices */
 @media screen and (max-width: 480px) {
+    :root {
+        --bottom-nav-height: 50px;
+        --copyright-height: 30px;
+    }
+
+    .navigation-controls {
+        padding: 0.3rem;
+    }
+
+    .nav-arrow {
+        width: 2.5rem;
+        height: 2.5rem;
+        font-size: 1rem;
+        margin: 0 0.5rem;
+    }
+
+    .copyright {
+        font-size: 0.75rem;
+    }
+
     .screen {
         padding-bottom: 100px; /* Slightly less padding for smaller screens */
     }
 
     .content {
         min-height: calc(100vh - 100px);
-    }
-
-    .navigation-controls {
-        bottom: 50px;
-        padding: 0.8rem;
-    }
-
-    .nav-arrow {
-        width: 3rem;
-        height: 3rem;
-        font-size: 1.1rem;
-        margin: 0 0.8rem;
-    }
-
-    .copyright {
-        font-size: 0.75rem;
-        padding: 0.4rem;
     }
 
     .globe-container {
