@@ -1084,6 +1084,85 @@ p {
 
 /* Mobile Navigation Menu */
 @media screen and (max-width: 768px) {
+    /* Enable scrolling for content */
+    body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .container {
+        overflow-y: auto;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .screen {
+        min-height: 100vh;
+        height: auto;
+        overflow-y: auto;
+        position: relative;
+        padding-bottom: 120px; /* Space for navigation and copyright */
+    }
+
+    .content {
+        padding: 1rem;
+        min-height: calc(100vh - 120px); /* Account for navigation and copyright */
+    }
+
+    /* Adjust navigation controls positioning */
+    .navigation-controls {
+        position: fixed;
+        bottom: 60px; /* Move up to make room for copyright */
+        left: 0;
+        right: 0;
+        transform: none;
+        justify-content: center;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 1rem;
+        z-index: 100;
+    }
+
+    .nav-arrow {
+        width: 3.5rem;
+        height: 3.5rem;
+        font-size: 1.2rem;
+        margin: 0 1rem;
+    }
+
+    /* Adjust copyright position */
+    .copyright {
+        position: fixed;
+        bottom: 1rem;
+        left: 0;
+        right: 0;
+        text-align: center;
+        padding: 0.5rem;
+        background: rgba(0, 0, 0, 0.8);
+        z-index: 100;
+    }
+
+    /* Adjust content containers for better scrolling */
+    .principles-container,
+    .how-container,
+    .support-trifold {
+        padding-bottom: 2rem;
+    }
+
+    .principle-card,
+    .method-box,
+    .support-panel {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Ensure carousels are scrollable */
+    .reasons-container,
+    .timeline-container {
+        height: auto;
+        min-height: 60vh;
+        margin-bottom: 2rem;
+    }
+
+    /* Rest of the existing mobile styles... */
     .menu {
         flex-direction: column;
         width: 100%;
@@ -1273,6 +1352,31 @@ p {
 
 /* Small mobile devices */
 @media screen and (max-width: 480px) {
+    .screen {
+        padding-bottom: 100px; /* Slightly less padding for smaller screens */
+    }
+
+    .content {
+        min-height: calc(100vh - 100px);
+    }
+
+    .navigation-controls {
+        bottom: 50px;
+        padding: 0.8rem;
+    }
+
+    .nav-arrow {
+        width: 3rem;
+        height: 3rem;
+        font-size: 1.1rem;
+        margin: 0 0.8rem;
+    }
+
+    .copyright {
+        font-size: 0.75rem;
+        padding: 0.4rem;
+    }
+
     .globe-container {
         height: 40vh;
     }
