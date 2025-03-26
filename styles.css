@@ -1099,6 +1099,33 @@ p {
     letter-spacing: 0.5px;
 }
 
+@media screen and (max-width: 768px) {
+    .copyright {
+        position: static;
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: 2rem;
+    }
+    
+    /* Create a container for the copyright at the bottom of the page */
+    .container::after {
+        content: "Copyright © 1 Billion Cell Phones Project, 2025";
+        display: block;
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 0.8rem;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 300;
+        letter-spacing: 0.5px;
+        margin-top: 2rem;
+    }
+    
+    /* Hide the fixed copyright on mobile */
+    .copyright {
+        display: none;
+    }
+}
+
 /* Mobile Menu Styles */
 .mobile-menu-items {
     display: none;
@@ -1126,5 +1153,24 @@ p {
 
     .typing-text {
         display: none;
+    }
+}
+
+/* Mobile Icon Styles */
+.mobile-icon {
+    display: none;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.mobile-icon img {
+    width: 64px;
+    height: 64px;
+    object-fit: contain;
+}
+
+@media screen and (max-width: 768px) {
+    .mobile-icon {
+        display: block;
     }
 }
