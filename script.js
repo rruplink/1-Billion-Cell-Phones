@@ -284,26 +284,4 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initially show first screen
     showScreen(0);
-
-    // Mobile Menu Functionality
-    const mobileMenuButton = document.querySelector('.mobile-menu-button');
-    const mobileMenuOverlay = document.querySelector('.mobile-menu-overlay');
-    const mobileMenuItems = document.querySelectorAll('.mobile-menu-item');
-
-    mobileMenuButton.addEventListener('click', () => {
-        mobileMenuOverlay.classList.toggle('active');
-    });
-
-    mobileMenuItems.forEach(item => {
-        item.addEventListener('click', () => {
-            mobileMenuOverlay.classList.remove('active');
-        });
-    });
-
-    // Close mobile menu when clicking outside
-    mobileMenuOverlay.addEventListener('click', (e) => {
-        if (e.target === mobileMenuOverlay) {
-            mobileMenuOverlay.classList.remove('active');
-        }
-    });
 });
