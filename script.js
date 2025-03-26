@@ -8,8 +8,32 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentScreen = 0;
     let isMobile = window.innerWidth <= 768;
     
-    // Function to display a specific screen
+    // Function to set up mobile view
+    function setupMobileView() {
+        screens.forEach(screen => {
+            screen.classList.remove('active');
+            screen.style.opacity = '1';
+            screen.style.visibility = 'visible';
+        });
+    }
+
+    // Function to set up desktop view
+    function setupDesktopView() {
+        screens.forEach((screen, index) => {
+            screen.style.opacity = '';
+            screen.style.visibility = '';
+            if (index === currentScreen) {
+                screen.classList.add('active');
+            } else {
+                screen.classList.remove('active');
+            }
+        });
+    }
+    
+    // Function to display a specific screen (desktop only)
     function showScreen(index) {
+        if (isMobile) return;
+        
         // Remove active class from all screens and nav items
         screens.forEach(screen => screen.classList.remove('active'));
         pageNavItems.forEach(item => item.classList.remove('active'));
@@ -33,30 +57,27 @@ document.addEventListener('DOMContentLoaded', () => {
                 globeVideo.pause();
             }
         }
-
-        // On mobile, scroll to the screen
-        if (isMobile) {
-            screens[index].scrollIntoView({ behavior: 'smooth' });
-        }
     }
     
-    // Event listeners for navigation buttons
+    // Event listeners for navigation buttons (desktop only)
     nextButton.addEventListener('click', () => {
-        if (currentScreen < screens.length - 1) {
+        if (!isMobile && currentScreen < screens.length - 1) {
             showScreen(currentScreen + 1);
         }
     });
     
     prevButton.addEventListener('click', () => {
-        if (currentScreen > 0) {
+        if (!isMobile && currentScreen > 0) {
             showScreen(currentScreen - 1);
         }
     });
     
-    // Event listeners for page nav items
+    // Event listeners for page nav items (desktop only)
     pageNavItems.forEach((navItem, index) => {
         navItem.addEventListener('click', () => {
-            showScreen(index);
+            if (!isMobile) {
+                showScreen(index);
+            }
         });
     });
     
@@ -64,11 +85,17 @@ document.addEventListener('DOMContentLoaded', () => {
     menuItems.forEach(item => {
         item.addEventListener('click', () => {
             const targetId = item.getAttribute('data-target');
-            screens.forEach((screen, index) => {
-                if (screen.id === targetId) {
-                    showScreen(index);
-                }
-            });
+            if (isMobile) {
+                // On mobile, smooth scroll to the target section
+                document.getElementById(targetId).scrollIntoView({ behavior: 'smooth' });
+            } else {
+                // On desktop, use the slide navigation
+                screens.forEach((screen, index) => {
+                    if (screen.id === targetId) {
+                        showScreen(index);
+                    }
+                });
+            }
         });
     });
     
@@ -103,11 +130,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Handle window resize
     window.addEventListener('resize', () => {
+        const wasMobile = isMobile;
         isMobile = window.innerWidth <= 768;
-        if (!isMobile) {
-            showScreen(currentScreen);
+        
+        // Only update the view if the device type has changed
+        if (wasMobile !== isMobile) {
+            if (isMobile) {
+                setupMobileView();
+            } else {
+                setupDesktopView();
+            }
         }
     });
+
+    // Initialize the view based on device type
+    if (isMobile) {
+        setupMobileView();
+    } else {
+        showScreen(0);
+    }
 
     // Initialize form submissions with animation and validation
     const forms = document.querySelectorAll('.terminal-form');
@@ -294,7 +335,4 @@ document.addEventListener('DOMContentLoaded', () => {
     if (document.querySelector('.timeline-carousel')) {
         timelineSetup();
     }
-
-    // Initially show first screen
-    showScreen(0);
 });
