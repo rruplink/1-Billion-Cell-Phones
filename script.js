@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const prevButton = document.getElementById('prev-screen');
     const menuItems = document.querySelectorAll('.menu-item');
     let currentScreen = 0;
+    let isMobile = window.innerWidth <= 768;
     
     // Function to display a specific screen
     function showScreen(index) {
@@ -31,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 globeVideo.pause();
             }
+        }
+
+        // On mobile, scroll to the screen
+        if (isMobile) {
+            screens[index].scrollIntoView({ behavior: 'smooth' });
         }
     }
     
@@ -66,10 +72,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
     
-    // Wheel event for scrolling between screens
+    // Wheel event for scrolling between screens (desktop only)
     let isScrolling = false;
     document.addEventListener('wheel', (e) => {
-        if (isScrolling) return;
+        if (isScrolling || isMobile) return;
         
         isScrolling = true;
         
@@ -84,12 +90,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 1000);
     });
     
-    // Keyboard navigation
+    // Keyboard navigation (desktop only)
     document.addEventListener('keydown', (e) => {
+        if (isMobile) return;
+        
         if (e.key === 'ArrowDown' && currentScreen < screens.length - 1) {
             showScreen(currentScreen + 1);
         } else if (e.key === 'ArrowUp' && currentScreen > 0) {
             showScreen(currentScreen - 1);
+        }
+    });
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+        isMobile = window.innerWidth <= 768;
+        if (!isMobile) {
+            showScreen(currentScreen);
         }
     });
 
@@ -105,11 +121,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Add click handlers for all support page buttons
     const supportButtons = document.querySelectorAll('.support-panel .terminal-button');
     supportButtons.forEach(button => {
-        button.addEventListener('click', (e) => {
-            if (!e.target.closest('form')) { // Only trigger for non-form buttons
-                e.preventDefault();
-                alert('This functionality has not been added yet. Check back soon.');
-            }
+        button.addEventListener('click', () => {
+            alert('This functionality has not been added yet. Check back soon.');
         });
     });
 
